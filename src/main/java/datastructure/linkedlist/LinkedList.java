@@ -20,23 +20,20 @@ public class LinkedList {
 	}
 
 	/*
-	 * Method to insert between two nodes
-	 *
-	 */
-	public void insertBetweenNode(int a, int b, int c) {
-		Node newNode = new Node(c);
-		Node temp = head;
-		while (temp.next != null) {
-			if ((temp.data == a && temp.next.data == b) || (temp.data == a && temp.next.data == b)) {
-				Node afterc = temp.next;
-				temp.next = newNode;
-				temp.next.next = afterc;
-				break;
-			}
-			temp = temp.next;
-		}
-	}
-
+    *  delete the last node 
+    */
+   public void popLastNode() {
+       Node temp = head;
+       if (head == null) {
+           System.out.println("Linked list is empty");
+       } else {
+           while (temp.next != tail) {
+               temp = temp.next;
+           }
+           temp.next = null;
+           tail = temp;
+       }
+   }
 	/*
 	 * show method to display the linked list data
 	 */
@@ -56,9 +53,10 @@ public class LinkedList {
 	public static void main(String[] args) {
 		LinkedList obj = new LinkedList();
 		obj.insert(56);
+		obj.insert(30);
 		obj.insert(70);
 		obj.display();
-		obj.insertBetweenNode(56, 70, 30);
+		obj.popLastNode();
 		obj.display();
 	}
 }
