@@ -3,6 +3,7 @@ package datastructure.linkedlist;
 public class LinkedList {
 	Node head;
 	Node tail;
+	int size;
 
 	/*
 	 * create linked list
@@ -20,26 +21,30 @@ public class LinkedList {
 	}
 
 	/*
-	 * Method is used to insert the node in linked list
+	 *  delete the node in linked list
 	 */
-	public void insertAfter(int insertAfter, int insertData) {
-		Node temp = head;
-		Node insertNode = new Node(insertData);
-		if (head == null) {
-			System.out.println("Linked List is empty");
-		} else {
-			while (temp != null) {
-				if (temp.data == insertAfter) {
-					Node node = temp.next;
-					temp.next = insertNode;
-					insertNode.next = node;
-					temp = node;
-				} else {
-					temp = temp.next;
-				}
-			}
-		}
-	}
+    public void deleteNode(int key) {
+        if (head == null) {
+            System.out.println("Linked List is empty");
+        } else {
+            Node temp = head;
+            if (head.data == key) {
+                head = head.next;
+                size--;
+            }
+            while (temp != null && temp.next != null) {
+                if (temp.next.data == key) {
+                    temp.next = temp.next.next;
+                    size--;
+                }
+                temp = temp.next;
+            }
+        }
+    }
+   //check length of node
+    public void size() {
+        System.out.println("Size of the linked list is : " + size);
+    }
 
 	/*
 	 * show method to display the linked list data
@@ -61,10 +66,13 @@ public class LinkedList {
 		LinkedList obj = new LinkedList();
 		obj.insert(56);
 		obj.insert(30);
+		obj.insert(40);
 		obj.insert(70);
 		obj.display();
-		obj.insertAfter(30,40);
+		obj.size();
+		obj.deleteNode(40);
 		obj.display();
+		obj.size();
 
 	}
 }
