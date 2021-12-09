@@ -8,32 +8,28 @@ public class LinkedList {
 	 * create linked list
 	 *
 	 */
-	public void insert(int data) {
-		Node node = new Node(data);
+	public void create(int data) {
+		Node nextNode = new Node(data);
 		if (head == null) {
-			head = node;
-			tail = node;
+			head = nextNode;
+			tail = nextNode;
 		} else {
-			tail.next = node;
+			tail.next = nextNode;
 			tail = tail.next;
 		}
 	}
 
 	/*
-	 * Method to insert between two nodes
-	 *
+	 * pop the head node
+	 * 
 	 */
-	public void insertBetweenNode(int a, int b, int c) {
-		Node newNode = new Node(c);
+
+	public void pop() {
 		Node temp = head;
-		while (temp.next != null) {
-			if ((temp.data == a && temp.next.data == b) || (temp.data == a && temp.next.data == b)) {
-				Node afterc = temp.next;
-				temp.next = newNode;
-				temp.next.next = afterc;
-				break;
-			}
-			temp = temp.next;
+		if (head == null) {
+			System.out.println("List is empty");
+		} else {
+			head = temp.next;
 		}
 	}
 
@@ -55,10 +51,11 @@ public class LinkedList {
 	// main method
 	public static void main(String[] args) {
 		LinkedList obj = new LinkedList();
-		obj.insert(56);
-		obj.insert(70);
+		obj.create(56);
+		obj.create(30);
+		obj.create(70);
 		obj.display();
-		obj.insertBetweenNode(56, 70, 30);
+		obj.pop();
 		obj.display();
 	}
 }
