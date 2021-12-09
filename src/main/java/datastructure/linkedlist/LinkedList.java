@@ -2,23 +2,36 @@ package datastructure.linkedlist;
 
 public class LinkedList {
 	Node head;
-    Node tail;
+	Node tail;
 
-    /*
-     *  append the data in linked list
-     *
-     */
-    public void append(int data) {
-        Node nextNode = new Node(data);
-        if (head == null) {
-            head = nextNode;
-            tail = nextNode;
-        } else {
-            tail.next = nextNode;
-            tail = tail.next;
-        }
-    }
+	/*
+	 * create linked list
+	 *
+	 */
+	public void create(int data) {
+		Node nextNode = new Node(data);
+		if (head == null) {
+			head = nextNode;
+			tail = nextNode;
+		} else {
+			tail.next = nextNode;
+			tail = tail.next;
+		}
+	}
 
+	/*
+	 * pop the head node
+	 * 
+	 */
+
+	public void pop() {
+		Node temp = head;
+		if (head == null) {
+			System.out.println("List is empty");
+		} else {
+			head = temp.next;
+		}
+	}
 
 	/*
 	 * show method to display the linked list data
@@ -38,9 +51,11 @@ public class LinkedList {
 	// main method
 	public static void main(String[] args) {
 		LinkedList obj = new LinkedList();
-		obj.append(56);
-		obj.append(30);
-		obj.append(70);
+		obj.create(56);
+		obj.create(30);
+		obj.create(70);
+		obj.display();
+		obj.pop();
 		obj.display();
 	}
 }
