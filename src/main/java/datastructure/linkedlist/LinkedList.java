@@ -2,22 +2,23 @@ package datastructure.linkedlist;
 
 public class LinkedList {
 	Node head;
+    Node tail;
 
-	/*
-	 * method to add linked list, push as first node will be the last node
-	 * 
-	 * @param data integer to be added in linked list
-	 */
-	public void addNodeMethod(int data) {
-		Node newNode = new Node(data);
-		if (head == null) {
-			head = newNode;
-		} else {
-			Node temp = head;
-			head = newNode;
-			newNode.next = temp;
-		}
-	}
+    /*
+     *  append the data in linked list
+     *
+     */
+    public void append(int data) {
+        Node nextNode = new Node(data);
+        if (head == null) {
+            head = nextNode;
+            tail = nextNode;
+        } else {
+            tail.next = nextNode;
+            tail = tail.next;
+        }
+    }
+
 
 	/*
 	 * show method to display the linked list data
@@ -37,9 +38,9 @@ public class LinkedList {
 	// main method
 	public static void main(String[] args) {
 		LinkedList obj = new LinkedList();
-		obj.addNodeMethod(70);
-		obj.addNodeMethod(30);
-		obj.addNodeMethod(56);
+		obj.append(56);
+		obj.append(30);
+		obj.append(70);
 		obj.display();
 	}
 }
