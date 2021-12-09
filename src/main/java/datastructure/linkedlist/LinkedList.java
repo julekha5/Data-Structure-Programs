@@ -20,20 +20,26 @@ public class LinkedList {
 	}
 
 	/*
-    *  delete the last node 
-    */
-   public void popLastNode() {
-       Node temp = head;
-       if (head == null) {
-           System.out.println("Linked list is empty");
-       } else {
-           while (temp.next != tail) {
-               temp = temp.next;
-           }
-           temp.next = null;
-           tail = temp;
-       }
-   }
+	 * search node
+	 */
+	public void search(int data) {
+		Node temp = head;
+		int index = 0;
+		if (head == null) {
+			System.out.println("Linked List is empty");
+		} else {
+			while (temp != null) {
+				index++;
+				if (temp.data == data) {
+					System.out.println("Node is present at" + index +"position");
+					break;
+				} else {
+					temp = temp.next;
+				}
+			}
+		}
+
+	}
 	/*
 	 * show method to display the linked list data
 	 */
@@ -56,7 +62,6 @@ public class LinkedList {
 		obj.insert(30);
 		obj.insert(70);
 		obj.display();
-		obj.popLastNode();
-		obj.display();
+		obj.search(30);
 	}
 }
