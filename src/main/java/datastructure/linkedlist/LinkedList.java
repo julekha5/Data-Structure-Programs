@@ -20,26 +20,27 @@ public class LinkedList {
 	}
 
 	/*
-	 * search node
+	 * Method is used to insert the node in linked list
 	 */
-	public void search(int data) {
+	public void insertAfter(int insertAfter, int insertData) {
 		Node temp = head;
-		int index = 0;
+		Node insertNode = new Node(insertData);
 		if (head == null) {
 			System.out.println("Linked List is empty");
 		} else {
 			while (temp != null) {
-				index++;
-				if (temp.data == data) {
-					System.out.println("Node is present at" + index +"position");
-					break;
+				if (temp.data == insertAfter) {
+					Node node = temp.next;
+					temp.next = insertNode;
+					insertNode.next = node;
+					temp = node;
 				} else {
 					temp = temp.next;
 				}
 			}
 		}
-
 	}
+
 	/*
 	 * show method to display the linked list data
 	 */
@@ -62,6 +63,8 @@ public class LinkedList {
 		obj.insert(30);
 		obj.insert(70);
 		obj.display();
-		obj.search(30);
+		obj.insertAfter(30,40);
+		obj.display();
+
 	}
 }
